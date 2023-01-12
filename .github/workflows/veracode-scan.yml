@@ -6,5 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: print values
-      run: |
-          echo "${{ github.event.workflow_run.head_commit.message }}"
+      env:
+        commit_msg: ${{ github.event.workflow_run.head_commit.message }}
+      run: echo commit_msg
