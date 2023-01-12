@@ -8,4 +8,4 @@ jobs:
     - name: print values
       env:
         commit_msg: ${{ github.event.workflow_run.head_commit.message }}
-      run: echo ${{commit_msg}}
+      run: echo ${{ github.event.workflow_run.head_commit.message }}
