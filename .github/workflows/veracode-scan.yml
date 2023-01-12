@@ -1,14 +1,11 @@
 name: veracode-scan
-on: [pull_request]
+on: [push]
 
 jobs:
   main_job:
     runs-on: ubuntu-latest
     steps:
-    - name: Get PR Info
-      uses: minhchienwikipedia/get-pr-info@master
     - name: print values
       run: |
-          echo "{{env.GIT_COMMITS}}"
-          echo "{{env.GIT_LATEST_COMMIT_MESSAGE}}"
-          echo "{{env.GIT_BRANCH_NAME}}"
+          git log -1
+          echo "${{ github.event.workflow_run.head_commit.message }}"
