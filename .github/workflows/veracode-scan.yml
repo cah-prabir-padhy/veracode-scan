@@ -1,13 +1,14 @@
 name: veracode-scan
-on:
-  push:
-    branches:
-    - main
+on: [pull_request]
+
 jobs:
-  log-github-event-goodies:
-    name: "LOG Everything on GitHub Event"
+  main_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Logging
-        run: |
-          echo "${{toJSON(github.event)}}"
+    - name: Get PR Info
+      uses: minhchienwikipedia/get-pr-info@master
+    - name: print values
+      run: |
+          echo "{{env.GIT_COMMITS}}"
+          echo "{{env.GIT_LATEST_COMMIT_MESSAGE}}"
+          echo "{{env.GIT_BRANCH_NAME}}"
